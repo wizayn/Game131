@@ -10,11 +10,11 @@ goto cloneRepo
 
 :userfirst
 set username=%~2
-IF"%3"=="email" (
+IF "%3"=="email" (
     set email=%~4
     set RepoAddress=%~6
 )   else (
-        set cloneRepo=%~4
+        set RepoAddress=%~4
         set email=$~6
 )
 goto display
@@ -47,8 +47,8 @@ echo email %email%
 echo Repo Address %RepoAddress%
 
 
-git clone RepoAddress
+git clone %RepoAddress%
 
-git config user.name username
+git config user.name %username%
 
-git config user.email email
+git config user.email %email%
