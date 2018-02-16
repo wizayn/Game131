@@ -2,5 +2,8 @@
 
 set commitMessage=%~1
 
+git add .\
+
 git commit -m %commitMessage%
-echo Message %commitMessage%
+
+git push
