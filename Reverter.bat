@@ -1,3 +1,3 @@
 @echo off
 
-git reset "%~1"
+git reset --hard "%~1"
