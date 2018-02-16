@@ -4,5 +4,6 @@ echo You are about to revert all changes to working directory since last commit.
 
 set /p input=Y or N
 
-IF %input%=="Y" git reset --hard
-IF %input%=="N" EXIT /B
+IF %input%==Y git reset --hard
+
+EXIT /B
