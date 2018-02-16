@@ -1,3 +1,3 @@
 @echo off
 
-git checkout -f --"%~1"
+git reset "%~1"
