@@ -1,6 +1,4 @@
-
-
-
+@echo off
 
 git add .\
 
