@@ -42,7 +42,6 @@ public class LevelEditorWindow : EditorWindow {
 
         x = EditorGUILayout.FloatField("X: ", x);
         y = EditorGUILayout.FloatField("Y: ", y);
-        z = EditorGUILayout.FloatField("Z: ", z);
         bounceAmount = EditorGUILayout.FloatField("bounceAmount: ", bounceAmount);
         //Create a dictionary to access list of Resources
         if (GUILayout.Button("Create"))
