@@ -24,9 +24,10 @@ public class changeObjectProps : Editor
 
         Transform t = (Transform)target;
         Event currentEvent = Event.current;
-
+        //Check if a key is pressed down
         if (currentEvent.type == EventType.KeyDown)
         {
+            //if key pressed is 1, 2 or 3 change RotateScaleMove to the relative value
             if (currentEvent.keyCode == KeyCode.Alpha1)
             {
                 RotateScaleMove = 1;
@@ -34,6 +35,8 @@ public class changeObjectProps : Editor
 
             if (currentEvent.keyCode == KeyCode.Alpha2)
             {
+                Event current = Event.current;
+                current.Use();
                 RotateScaleMove = 2;
             }
 
@@ -42,6 +45,7 @@ public class changeObjectProps : Editor
                 RotateScaleMove = 3;
             }
 
+            //if RotateScaleMove == 1 then you can use A,S,D or W to move the currently selected object up, down, left or right
             if (RotateScaleMove == 1)
             {
                 if (currentEvent.keyCode == KeyCode.D)
@@ -65,21 +69,23 @@ public class changeObjectProps : Editor
                 }
             }
 
+            //if RoateScaleMove == 2 rotate object cloakwise with A or counter cloakwise with D
             if (RotateScaleMove == 2)
             {
                 if (currentEvent.keyCode == KeyCode.D)
                 {
                     
-                    t.eulerAngles += new Vector3(0, 0, 0.1f);
+                    t.eulerAngles += new Vector3(0, 0, 0.5f);
 
                 }
 
                 if (currentEvent.keyCode == KeyCode.A)
                 {
-                    t.eulerAngles += new Vector3(0, 0, -0.1f);
+                    t.eulerAngles += new Vector3(0, 0, -0.5f);
                 }
             }
 
+            //if RoateScaleMove == 3 you can use A,S,D or W to scale the object width and hight
             if (RotateScaleMove == 3)
             {
                 if (currentEvent.keyCode == KeyCode.D)
