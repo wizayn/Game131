@@ -13,11 +13,10 @@ public class LevelEditorWindow : EditorWindow {
     public float x = 0.0f;
     public float y = 0.0f;
     public float z = 0.0f;
-    public float bounceAmount = 0.0f;
     GameObject toCreate;
+    
 
     [MenuItem("Examples/Editor GUILayout Popup usage")]
-
     static void Init()
     {
         EditorWindow window = GetWindow(typeof(LevelEditorWindow));
@@ -42,7 +41,7 @@ public class LevelEditorWindow : EditorWindow {
 
         x = EditorGUILayout.FloatField("X: ", x);
         y = EditorGUILayout.FloatField("Y: ", y);
-        bounceAmount = EditorGUILayout.FloatField("bounceAmount: ", bounceAmount);
+        
         //Create a dictionary to access list of Resources
         if (GUILayout.Button("Create"))
             InstantiateObject();
@@ -65,52 +64,7 @@ public class LevelEditorWindow : EditorWindow {
         tempToCreate.y = y;
         tempToCreate.z = z;
         toCreate.transform.position = tempToCreate;
-        toCreate.GetComponent<BoxCollider2D>().sharedMaterial.bounciness = bounceAmount;
+        PhysicsMaterial2D mat = new PhysicsMaterial2D();
+        toCreate.GetComponent<Collider2D>().sharedMaterial = mat;
     }
-
-    //private float currentX = 0.0f;
-    //private void OnGUI()
-    //{
-    //    GUILayout.Label("Hello world");
-
-    //    //if(GUILayout.Button("Create Cube"))
-    //    //{
-    //    //    string[] cubeGuids = AssetDatabase.FindAssets("crossbowRoot");
-
-    //    //    StringBuilder guidBuilder = new StringBuilder();
-    //    //    foreach(string cubeGuid in cubeGuids)
-    //    //    {
-    //    //        guidBuilder.AppendLine(cubeGuid);
-
-    //    //    }
-    //    //    UnityEngine.MonoBehaviour.print(guidBuilder.ToString());
-
-    //    //    if(cubeGuids.Length >0)
-    //    //    {
-    //    //        string trueCubeGuid = cubeGuids[0];
-
-    //    //        // 2. Get the asset's path from the GUID
-    //    //        string assetPath = AssetDatabase.GUIDToAssetPath(trueCubeGuid);
-    //    //        UnityEngine.MonoBehaviour.print(assetPath);
-
-
-    //    //        //3. Fetch the object
-    //    //        GameObject cubeTemplate = AssetDatabase.LoadAssetAtPath(assetPath, typeof(GameObject)) as GameObject;
-
-    //    //        GameObject newCube = GameObject.Instantiate(cubeTemplate);
-    //    //        newCube.name = cubeTemplate.name;
-
-    //    //        //Funsies = spawn in a line along x
-    //    //        Vector3 newCubePosition = newCube.transform.position;
-    //    //        newCubePosition.x = currentX;
-    //    //        newCube.transform.position = newCubePosition;
-
-    //    //        currentX += 1f;
-
-    //    //    }
-    //    //}
-    //}
-
-
-
 }

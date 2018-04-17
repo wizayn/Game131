@@ -241,8 +241,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BulletControl.cs" />
+    <Compile Include="Assets\ChangeBouncyness.cs" />
     <Compile Include="Assets\CrossbowUserControl.cs" />
-    <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\ObjectOptionScript.cs" />
     <Compile Include="Assets\TargetController.cs" />
   </ItemGroup>
