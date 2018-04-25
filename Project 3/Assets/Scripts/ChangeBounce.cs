@@ -10,7 +10,7 @@ public class ChangeBounce : MonoBehaviour {
     void Start()
     {
         //sets the bounciness value on the collider2Ds shared material of the object this is script is attached to bounce
-        GetComponent<Collider2D>().sharedMaterial.bounciness = bounce;       
+        //GetComponent<Collider2D>().sharedMaterial.bounciness = bounce;       
 	}
 	
 	
