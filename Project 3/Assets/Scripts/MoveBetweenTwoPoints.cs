@@ -11,11 +11,14 @@ public class MoveBetweenTwoPoints : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        startPosition = gameObject.transform.parent.transform.position; ;
+        endPosition = gameObject.transform.parent.gameObject.transform.parent.Find("EndPoint").transform.position;
 
         float moveMagnitude = speed * Time.deltaTime;
         if (startPosition != endPosition)
@@ -30,6 +33,7 @@ public class MoveBetweenTwoPoints : MonoBehaviour {
 
     private float ResolveMovement(float moveMagnitude)
     {
+        
         Vector3 currentTarget = isMovingToStart ? startPosition : endPosition;
         Vector3 toCurrentTarget = currentTarget - transform.position;
         float targetDelta = Vector3.Distance(currentTarget, transform.position);

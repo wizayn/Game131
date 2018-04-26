@@ -13,6 +13,7 @@ public class LevelEditorWindow : EditorWindow {
     public float x = 0.0f;
     public float y = 0.0f;
     public float z = 0.0f;
+    public float defaultSpeed = 1f;
     GameObject toCreate;
     
     //opens the editor window
@@ -44,7 +45,8 @@ public class LevelEditorWindow : EditorWindow {
 
         x = EditorGUILayout.FloatField("X: ", x);
         y = EditorGUILayout.FloatField("Y: ", y);
-        
+        defaultSpeed = EditorGUILayout.FloatField("Default Speed: ", defaultSpeed);
+
         //Create a dictionary to access list of Resources
         if (GUILayout.Button("Create"))
             InstantiateObject();
@@ -67,11 +69,14 @@ public class LevelEditorWindow : EditorWindow {
     void InstantiateObject()
     {
         toCreate = GameObject.Instantiate(temp[index]) as GameObject;
+        toCreate.name = temp[index].name;
         Vector3 tempToCreate = toCreate.transform.position;
         tempToCreate.x = x;
         tempToCreate.y = y;
         toCreate.transform.position = tempToCreate;
         PhysicsMaterial2D mat = new PhysicsMaterial2D();
-        toCreate.GetComponent<Collider2D>().sharedMaterial = mat;
+        toCreate.transform.GetChild(0).GetChild(0).GetComponent<Collider2D>().sharedMaterial = mat;
+
+        toCreate.transform.GetChild(0).GetChild(0).GetComponent<MoveBetweenTwoPoints>().speed = defaultSpeed;
     }
 }
