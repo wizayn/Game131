@@ -7,6 +7,8 @@ using UnityEditor;
 public class changeObjectProps : Editor
 {
     private int RotateScaleMove = 1;
+
+
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -21,7 +23,6 @@ public class changeObjectProps : Editor
 
     private void OnSceneGUI()
     {
-
         Transform t = (Transform)target;
         Event currentEvent = Event.current;
         //Check if a key is pressed down
@@ -31,6 +32,7 @@ public class changeObjectProps : Editor
             if (currentEvent.keyCode == KeyCode.Alpha1)
             {
                 RotateScaleMove = 1;
+
             }
 
             if (currentEvent.keyCode == KeyCode.Alpha2)
@@ -38,11 +40,13 @@ public class changeObjectProps : Editor
                 Event current = Event.current;
                 current.Use();
                 RotateScaleMove = 2;
+
             }
 
             if (currentEvent.keyCode == KeyCode.Alpha3)
             {
                 RotateScaleMove = 3;
+
             }
 
             //if RotateScaleMove == 1 then you can use A,S,D or W to move the currently selected object up, down, left or right
@@ -111,4 +115,3 @@ public class changeObjectProps : Editor
         }
     }
 }
-

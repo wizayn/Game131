@@ -9,6 +9,7 @@ public class LevelEditorWindow : EditorWindow {
     public static Object[] temp;
     public static string[] options;
     public int index = 0;
+	public int count = 4;
     private GameObject toInstantiate;
     public float x = 0.0f;
     public float y = 0.0f;
@@ -27,13 +28,20 @@ public class LevelEditorWindow : EditorWindow {
     //loads all assets in the Resource folder.
     public void Awake()
     {
-        temp = Resources.LoadAll("", typeof(Object));
+		temp = new Object[count];
+		temp [0] = Resources.Load ("Rail");
+		temp [1] = Resources.Load ("Target");
+		temp [2] = Resources.Load ("wallBase");
+		temp [3] = Resources.Load ("crossbowRoot");
+		foreach (object i in temp) {
+			Debug.Log (i);
+		}
         options = new string[temp.Length];
 
         for (int i = 0; i < temp.Length; i++)
         {
             options[i] = temp[i].name;
-            Debug.Log(options[i]);
+            //Debug.Log(options[i]);
         }
         
     }
@@ -74,9 +82,8 @@ public class LevelEditorWindow : EditorWindow {
         tempToCreate.x = x;
         tempToCreate.y = y;
         toCreate.transform.position = tempToCreate;
-        PhysicsMaterial2D mat = new PhysicsMaterial2D();
-        toCreate.transform.GetChild(0).GetChild(0).GetComponent<Collider2D>().sharedMaterial = mat;
-
+        
+		if(toCreate.name == "Rail")
         toCreate.transform.GetChild(0).GetChild(0).GetComponent<MoveBetweenTwoPoints>().speed = defaultSpeed;
     }
 }
